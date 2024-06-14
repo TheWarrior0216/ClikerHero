@@ -32,18 +32,30 @@ let automaticUpgrades = [
   }
 ];
 function Harvest() {
+  let total = 0
   darkEnergy++
-  clickUpgrades.forEach((item) => clickCollection += (item.quantity * item.multiplier))
+  clickUpgrades.forEach((item) => total += (item.quantity * item.multiplier))
+  console.log(total);
+  clickCollection = total
   darkEnergy += clickCollection
   Update()
 }
 function autoHarvest() {
-  automaticUpgrades.forEach((item) => autoCollection += (item.multiplier * item.quantity))
-  console.log(autoCollection)
+  let total = 0
+  automaticUpgrades.forEach((item) => total += (item.multiplier * item.quantity))
+
+  autoCollection = total
+  darkEnergy += autoCollection
   Update()
 }
 function Update() {
-  darkEnergy += autoCollection
+  let total = 0
+  clickUpgrades.forEach((item) => total += (item.quantity * item.multiplier))
+  clickCollection = total
+  total = 0
+  automaticUpgrades.forEach((item) => total += (item.multiplier * item.quantity))
+
+  autoCollection = total
   const darkEnergyEle = document.getElementById('totalDarkEnergy')
   const pickaxeEle = document.getElementById('currentHarvesters')
   const searchersEle = document.getElementById('currentSearchers')
@@ -54,10 +66,10 @@ function Update() {
 
   darkEnergyEle.innerHTML = ` Dark Energy = ${darkEnergy}`
   pickaxeEle.innerHTML = ` You have ${clickUpgrades[0].quantity} Soul Harvesters`
-  searchersEle.innerHTML = ` You have ${clickUpgrades[0].quantity} Soul Searchers`
+  searchersEle.innerHTML = ` You have ${clickUpgrades[1].quantity} Soul Searchers`
   clickCollectionEle.innerHTML = `Siphon Per Click: ${clickCollection + 1}`
   HadesGloveEle.innerHTML = `You have ${automaticUpgrades[0].quantity} Hades Glove`
-  HadesHelmEle.innerHTML = `You have ${automaticUpgrades[0].quantity} Hades Helm`
+  HadesHelmEle.innerHTML = `You have ${automaticUpgrades[1].quantity} Hades Helm`
   autoCollectionEle.innerHTML = `Siphon Per Second: ${autoCollection}`
 }
 function buyUpgrade(UpgradeType, Clicktype) {
@@ -68,7 +80,8 @@ function buyUpgrade(UpgradeType, Clicktype) {
     if (darkEnergy >= upgradeFound.price) {
       darkEnergy -= upgradeFound.price
       upgradeFound.quantity++
-      console.log('purchased')
+      upgradeFound.price += percentage('10', `${upgradeFound.price}`)
+      console.log(upgradeFound.price)
     }
     else (console.log('Not Enough Money'))
     Update()
@@ -84,6 +97,9 @@ function buyUpgrade(UpgradeType, Clicktype) {
     }
     else (console.log('Not Enough Money'))
     Update()
+  }
+  function percentage(partialValue, totalValue) {
+    return Math.round((100 * partialValue) / totalValue);
   }
 }
 Update()
