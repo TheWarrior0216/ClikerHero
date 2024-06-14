@@ -1,0 +1,16 @@
+.img-correction {
+  height: 40dvh;
+}
+
+.purple-text {
+  color: rgb(118, 4, 118);
+}
+
+.purple-bg {
+  background-color: rgb(118, 4, 118);
+  ;
+}
+
+bg-black.bg-gradient {
+  background-image: var(--bs-gradient);
+}

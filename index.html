@@ -18,8 +18,8 @@
     <div class="row">
       <div class="col-12">
         <div class="text-center">
-          <h1>Dark Wizard</h1>
-          <img class="img-fluid" role="button" onclick="Harvest()"
+          <h1 class="p-4">Dark Wizard</h1>
+          <img class="img-fluid img-correction" role="button" onclick="Harvest()"
             src="https://th.bing.com/th/id/R.e94ce15b9b5d98a71e02f5d5a2cbaca2?rik=daByEXziUvAV7g&pid=ImgRaw&r=0"
             alt="Dark Wizard">
         </div>
@@ -27,14 +27,44 @@
     </div>
   </section>
   <!-- SECTION This is where the logic pieces will go -->
-  <section class="container">
+  <section class="container purple-text bg-black rounded p-5">
     <div class="row">
       <div class="col-12">
-        <div>
-          <p id="totalDarkEnergy"> placeHolder</p>
-          <p id="currentPickaxes"> placeHolder</p>
-          <p id="currentClick"> placeHolder</p>
-          <p id="currentAuto"> placeHolder</p>
+        <div class="text-center">
+          <h3 class="mdi mdi-eye-outline purple-text pb-3" id="totalDarkEnergy"> placeHolder</h3>
+        </div>
+        <div class="col-12">
+          <div class="row text-center justify-content-around bg-info">
+            <div class="col-3">
+              <div class=" rounded p-4">
+                <p id="currentClick"> placeHolder</p>
+                <h1>
+                  <button onclick="buyUpgrade('clickUpgrades','Soul Harvester')" class="btn purple-bg text-info">
+                    Soul Harvesters <span class="mdi mdi-eye-outline"></span>50</button>
+                </h1>
+                <p id="currentHarvesters"> placeHolder</p>
+                <h1>
+                  <button onclick="buyUpgrade('clickUpgrades','Soul Searcher')" class="btn purple-bg text-info">
+                    Soul Searchers <span class="mdi mdi-eye-outline"></span>300</button>
+                </h1>
+                <p id="currentSearchers"> placeHolder</p>
+                <p></p>
+              </div>
+            </div>
+            <div class="col-3  rounded p-4">
+              <p id="currentAuto"> placeHolder</p>
+              <h1>
+                <button onclick="buyUpgrade('automaticUpgrades','Hades Glove')" class="btn purple-bg text-info">
+                  Hades' Glove <span class="mdi mdi-eye-outline"></span>300</button>
+              </h1>
+              <p id="Hades' Glove"> placeHolder</p>
+              <h1>
+                <button onclick="buyUpgrade('automaticUpgrades','Hades Helm')" class="btn purple-bg text-info">
+                  Hades' Helm <span class="mdi mdi-eye-outline"></span>3000</button>
+              </h1>
+              <p id="Hades' Helm"> placeHolder</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
