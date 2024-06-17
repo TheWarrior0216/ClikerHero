@@ -64,13 +64,23 @@ function Update() {
   const HadesHelmEle = document.getElementById("Hades' Helm")
   const autoCollectionEle = document.getElementById('currentAuto')
 
+  const hMoneyEle = document.getElementById('hMoney')
+  const sMoneyEle = document.getElementById('sMoney')
+  const gMoneyEle = document.getElementById('gMoney')
+  const haMoneyEle = document.getElementById('haMoney')
+
   darkEnergyEle.innerHTML = ` Dark Energy = ${darkEnergy}`
-  pickaxeEle.innerHTML = ` You have ${clickUpgrades[0].quantity} Soul Harvesters`
-  searchersEle.innerHTML = ` You have ${clickUpgrades[1].quantity} Soul Searchers`
+  pickaxeEle.innerHTML = ` You have ${clickUpgrades[0].quantity} Soul Harvesters 1/spc`
+  searchersEle.innerHTML = ` You have ${clickUpgrades[1].quantity} Soul Searchers 5/spc`
   clickCollectionEle.innerHTML = `Siphon Per Click: ${clickCollection + 1}`
-  HadesGloveEle.innerHTML = `You have ${automaticUpgrades[0].quantity} Hades Glove`
-  HadesHelmEle.innerHTML = `You have ${automaticUpgrades[1].quantity} Hades Helm`
+  HadesGloveEle.innerHTML = `You have ${automaticUpgrades[0].quantity} Hades Glove 20/sps`
+  HadesHelmEle.innerHTML = `You have ${automaticUpgrades[1].quantity} Hades Helm 200/sps`
   autoCollectionEle.innerHTML = `Siphon Per Second: ${autoCollection}`
+
+  hMoneyEle.innerHTML = `${clickUpgrades[0].price}`
+  sMoneyEle.innerHTML = `${clickUpgrades[1].price}`
+  gMoneyEle.innerHTML = `${automaticUpgrades[0].price}`
+  haMoneyEle.innerHTML = `${automaticUpgrades[1].price}`
 }
 function buyUpgrade(UpgradeType, Clicktype) {
   if (UpgradeType == 'clickUpgrades') {
@@ -93,7 +103,7 @@ function buyUpgrade(UpgradeType, Clicktype) {
     if (darkEnergy >= upgradeFound.price) {
       darkEnergy -= upgradeFound.price
       upgradeFound.quantity++
-      console.log('purchased')
+      upgradeFound.price += percentage('10', `${upgradeFound.price}`)
     }
     else (console.log('Not Enough Money'))
     Update()
@@ -103,4 +113,4 @@ function buyUpgrade(UpgradeType, Clicktype) {
   }
 }
 Update()
-setInterval(autoHarvest, 3000)
+setInterval(autoHarvest, 1000)
